@@ -1,7 +1,8 @@
-export type ProfileData = {
+export interface Profile {
   username: string;
   name: string;
-  title: string;
   bio: string;
   skills: string[];
-};
+  email: string;
+  imageUrl: string;
+}

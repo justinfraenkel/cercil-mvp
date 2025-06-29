@@ -1,34 +1,24 @@
-export type Profile = {
-  name: string;
-  username: string;
-  bio: string;
-  skills: string[];
-  contact: {
-    email: string;
-    website?: string;
-    linkedin?: string;
-  };
-};
+import { Profile } from './types';
 
-export const profiles: Record<string, Profile> = {
-  justin: {
-    name: 'Justin Fraenkel',
+export const profiles: Profile[] = [
+  {
     username: 'justin',
-    bio: 'Builder of ideas, financial automation explorer, and founder of Cercil.',
-    skills: ['Bookkeeping', 'Automation', 'SaaS Prototyping', 'Creative Strategy'],
-    contact: {
-      email: 'justin@example.com',
-      website: 'https://justinfraenkel.com',
-      linkedin: 'https://linkedin.com/in/justinfraenkel',
-    },
+    name: 'Justin Fraenkel',
+    bio: 'Co-creator of Cercil. Passionate about strategy, building, and relationships.',
+    skills: ['Strategy', 'AI', 'Product Design'],
+    email: 'justin@example.com',
+    imageUrl: 'https://via.placeholder.com/100?text=JF',
   },
-  gareth: {
-    name: 'Gareth Fraenkel',
+  {
     username: 'gareth',
-    bio: 'Global thinker with a passion for innovation and connecting people.',
-    skills: ['Brand Strategy', 'International Relations', 'Partnership Building'],
-    contact: {
-      email: 'gareth@example.com',
-    },
+    name: 'Gareth Fraenkel',
+    bio: 'Co-creator of Cercil. Interested in design, community, and wellness.',
+    skills: ['Design', 'Community Building', 'Wellness'],
+    email: 'gareth@example.com',
+    imageUrl: 'https://via.placeholder.com/100?text=GF',
   },
-};
+];
+
+export function getProfileByUsername(username: string): Profile | undefined {
+  return profiles.find((p) => p.username === username);
+}
