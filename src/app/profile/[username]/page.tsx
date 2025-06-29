@@ -2,18 +2,22 @@ import { getProfile } from '@/lib/profiles';
 import ProfileCard from '@/components/ProfileCard';
 import { type Metadata } from 'next';
 
-type PageProps = {
+export async function generateMetadata({
+  params,
+}: {
   params: { username: string };
-};
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+}): Promise<Metadata> {
   const profile = getProfile(params.username);
   return {
     title: profile ? `${profile.name} – Cercil` : 'Profile not found',
   };
 }
 
-export default function ProfilePage({ params }: PageProps) {
+export default function ProfilePage({
+  params,
+}: {
+  params: { username: string };
+}) {
   const profile = getProfile(params.username);
 
   if (!profile) {
