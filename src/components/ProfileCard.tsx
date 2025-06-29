@@ -1,24 +1,29 @@
-import React from 'react';
+import { Profile } from '@/lib/types';
 
-type ProfileCardProps = {
-  name: string;
-  bio: string;
-  skills: string[];
-  compact?: boolean; // used for hover preview
-};
+export interface ProfileCardProps {
+  profile: Profile;
+}
 
-export default function ProfileCard({ name, bio, skills, compact = false }: ProfileCardProps) {
+export default function ProfileCard({ profile }: ProfileCardProps) {
   return (
-    <div className={`border border-white/20 bg-white/10 backdrop-blur p-4 rounded-xl ${compact ? 'w-48 text-sm' : 'w-full max-w-md'}`}>
-      <h2 className="text-white font-semibold text-lg mb-2">{name}</h2>
-      <p className="text-white/80 mb-2">{bio}</p>
-      <div className="flex flex-wrap gap-2">
-        {skills.map((skill, i) => (
-          <span key={i} className="bg-yellow-400 text-black px-2 py-1 rounded-full text-xs">
+    <div className="bg-white text-black p-6 rounded-xl shadow-lg w-[300px] space-y-4">
+      <img
+        src={profile.imageUrl}
+        alt={profile.name}
+        className="w-24 h-24 rounded-full mx-auto"
+      />
+      <h2 className="text-xl font-bold text-center">{profile.name}</h2>
+      <p className="text-center text-sm">{profile.bio}</p>
+      <ul className="flex flex-wrap justify-center gap-2 text-sm text-white">
+        {profile.skills.map((skill, idx) => (
+          <li key={idx} className="bg-black px-3 py-1 rounded-full">
             {skill}
-          </span>
+          </li>
         ))}
-      </div>
+      </ul>
+      <p className="text-xs text-center text-gray-600">
+        Contact: {profile.email}
+      </p>
     </div>
   );
 }
