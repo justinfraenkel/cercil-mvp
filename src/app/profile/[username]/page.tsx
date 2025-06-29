@@ -15,18 +15,18 @@ export default function ProfilePage({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-900 p-8">
-      <div className="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <div className="min-h-screen bg-black text-white p-8">
+      <div className="max-w-xl mx-auto bg-gray-800 p-6 rounded-lg shadow-md">
         <h1 className="text-2xl font-bold mb-2">{profile.name}</h1>
-        <p className="text-sm text-gray-600 mb-4">@{profile.username}</p>
         <p className="mb-4">{profile.bio}</p>
-        <h2 className="text-lg font-semibold mb-2">Skills</h2>
-        <ul className="list-disc list-inside">
-          {profile.skills.map((skill: string, idx: number) => (
-            <li key={idx}>{skill}</li>
+        <h2 className="text-xl font-semibold mb-2">Skills</h2>
+        <ul className="list-disc list-inside space-y-1">
+          {profile.skills.map((skill, index) => (
+            <li key={index}>{skill}</li>
           ))}
         </ul>
       </div>
     </div>
   );
 }
+
