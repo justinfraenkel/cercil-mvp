@@ -1,21 +1,17 @@
 import { getProfile } from '@/lib/profiles';
 import ProfileCard from '@/components/ProfileCard';
 
-interface Props {
+interface PageProps {
   params: {
     username: string;
   };
 }
 
-export default function ProfilePage({ params }: Props) {
+export default async function ProfilePage({ params }: PageProps) {
   const profile = getProfile(params.username);
 
   if (!profile) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-black text-white">
-        <p>User not found</p>
-      </div>
-    );
+    return <div className="text-white p-10">Profile not found.</div>;
   }
 
   return (

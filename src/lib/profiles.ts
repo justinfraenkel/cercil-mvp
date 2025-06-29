@@ -1,24 +1,24 @@
 import { Profile } from './types';
 
-export const profiles: Profile[] = [
+const profiles: Profile[] = [
   {
     username: 'justin',
     name: 'Justin Fraenkel',
-    bio: 'Co-creator of Cercil. Passionate about strategy, building, and relationships.',
-    skills: ['Strategy', 'AI', 'Product Design'],
     email: 'justin@example.com',
-    imageUrl: 'https://via.placeholder.com/100?text=JF',
+    imageUrl: 'https://via.placeholder.com/150',
+    bio: 'Builder, thinker, founder of Cercil. Exploring the intersections of trust and tech.',
+    skills: ['Automation', 'AI', 'Finance', 'Startups'],
   },
   {
     username: 'gareth',
     name: 'Gareth Fraenkel',
-    bio: 'Co-creator of Cercil. Interested in design, community, and wellness.',
-    skills: ['Design', 'Community Building', 'Wellness'],
     email: 'gareth@example.com',
-    imageUrl: 'https://via.placeholder.com/100?text=GF',
+    imageUrl: 'https://via.placeholder.com/150',
+    bio: 'Creative strategist and collaborator. Believer in small wins and long games.',
+    skills: ['Design', 'Storytelling', 'Community', 'Ethics'],
   },
 ];
 
-export function getProfileByUsername(username: string): Profile | undefined {
+export function getProfile(username: string): Profile | undefined {
   return profiles.find((p) => p.username === username);
 }
