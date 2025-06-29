@@ -1,6 +1,7 @@
 'use client';
 
-import classNames from 'classnames';
+import Link from 'next/link';
+import HoverProfileCard from './HoverProfileCard';
 
 const OUTER_RADIUS = 300;
 const CENTER_X = 300;
@@ -8,12 +9,18 @@ const CENTER_Y = 300;
 
 const people = [
   {
+    username: 'justin',
     name: 'Justin Fraenkel',
-    verticalOffset: -20, // Shift upward
+    bio: 'Automation engineer helping finance pros streamline their workflow.',
+    skills: ['AI', 'Automation', 'Finance', 'No-code'],
+    verticalOffset: -20,
   },
   {
+    username: 'gareth',
     name: 'Gareth Fraenkel',
-    verticalOffset: 20, // Shift downward
+    bio: 'Performance coach and strategist focused on sports and analytics.',
+    skills: ['Coaching', 'Strategy', 'Sports Tech', 'Data'],
+    verticalOffset: 20,
   },
 ];
 
@@ -21,7 +28,6 @@ export default function CircleLayout() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white">
       <div className="relative w-[600px] h-[600px]">
-        {/* Concentric Circles */}
         {[1, 0.66, 0.33].map((factor, index) => (
           <div
             key={index}
@@ -35,20 +41,26 @@ export default function CircleLayout() {
           />
         ))}
 
-        {/* People */}
         {people.map((person, index) => (
           <div
             key={index}
-            className="absolute flex flex-col items-center"
+            className="absolute flex flex-col items-center group"
             style={{
               top: CENTER_Y + person.verticalOffset - 10,
               left: CENTER_X - 10,
             }}
           >
-            <div className="w-5 h-5 bg-yellow-400 rounded-full" />
-            <span className="text-xs mt-1 whitespace-nowrap">
-              {person.name}
-            </span>
+            <HoverProfileCard
+              name={person.name}
+              bio={person.bio}
+              skills={person.skills}
+            />
+            <Link
+              href={`/profile/${person.username}`}
+              className="text-xs mt-1 whitespace-nowrap hover:underline text-white"
+            >
+              View Profile
+            </Link>
           </div>
         ))}
       </div>
